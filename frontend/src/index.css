@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Global tweaks layered on top of Tailwind's reset
+   ------------------------------------------------------------------------ */
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    font-feature-settings: 'ss01', 'cv11';
+    /* The mesh-light background image lives on the wrapper layout — the
+       body just provides a fallback solid colour for the brief moment
+       before the React tree mounts. */
+    background-color: #f8fafc;
+  }
+  /* Custom selection colour — matches the brand without being garish. */
+  ::selection {
+    background-color: rgba(88, 103, 230, 0.18);
+    color: #1d2535;
+  }
+  /* Smoother focus rings everywhere. */
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(88, 103, 230, 0.18);
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  /* Glass card surface used by login / hero panels. */
+  .card-glass {
+    @apply rounded-2xl border border-white/60 bg-white/70 backdrop-blur-xl
+           shadow-soft;
+  }
+  /* Standard card surface used everywhere else. */
+  .card {
+    @apply rounded-2xl border border-ink-100 bg-white shadow-soft;
+  }
+  /* Pill / chip components. */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1
+           text-xs font-semibold tracking-wide;
+  }
+  .chip-brand   { @apply chip bg-brand-50 text-brand-700; }
+  .chip-success { @apply chip bg-success-100 text-success-600; }
+  .chip-warn    { @apply chip bg-warn-100 text-warn-600; }
+  .chip-danger  { @apply chip bg-danger-100 text-danger-600; }
+  .chip-ink     { @apply chip bg-ink-100 text-ink-600; }
+
+  /* Primary button — used for all CTAs. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl
+           bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white
+           shadow-glow transition-all hover:bg-brand-600 hover:shadow-lg
+           active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl
+           border border-ink-200 bg-white px-4 py-2.5 text-sm font-semibold
+           text-ink-700 transition-all hover:border-brand-300 hover:bg-brand-50
+           hover:text-brand-700 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl
+           px-3 py-2 text-sm font-medium text-ink-500 transition-colors
+           hover:bg-ink-100 hover:text-ink-800;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full rounded-xl border border-ink-200 bg-white px-4 py-2.5
+           text-sm text-ink-800 placeholder-ink-400 shadow-sm transition-all
+           focus:border-brand-400 focus:shadow-ring;
+  }
+
+  /* Shimmer skeleton */
+  .skeleton {
+    @apply animate-shimmer rounded-md
+           bg-[linear-gradient(110deg,#eef1f6_8%,#f6f8fc_18%,#eef1f6_33%)]
+           bg-[length:200%_100%];
+  }
+}
+
+/* Light scrollbar to match the airy palette */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(138, 147, 166, 0.35);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(88, 103, 230, 0.6); }
