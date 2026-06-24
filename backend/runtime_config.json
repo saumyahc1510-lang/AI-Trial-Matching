@@ -1,0 +1,8 @@
+{
+  "trial_parse_categories": [
+    "Endocrine & Metabolic",
+    "Oncology",
+    "Cardiovascular"
+  ],
+  "trial_parse_max_per_sync": 20
+}

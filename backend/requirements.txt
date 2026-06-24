@@ -1,0 +1,39 @@
+# Core Framework
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+pydantic==2.11.3
+pydantic-settings==2.9.1
+
+# Database
+sqlalchemy==2.0.41
+psycopg2-binary==2.9.10
+alembic==1.15.2
+
+# Background Tasks
+celery[redis]==5.5.2
+redis==6.2.0
+
+# LLM & AI
+groq==0.25.0
+
+# NLP & NER
+transformers==4.52.3
+torch==2.7.0
+spacy==3.8.7
+
+# HTTP Client
+httpx==0.28.1
+
+# Authentication
+python-jose[cryptography]==3.4.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.20
+
+# Utilities
+python-dateutil==2.9.0.post0
+python-dotenv==1.1.0
+
+# Testing
+pytest==8.4.0
+pytest-asyncio==1.0.0
+pytest-cov==6.1.1
